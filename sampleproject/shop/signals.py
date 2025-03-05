@@ -14,3 +14,4 @@ def log_product_save(sender,instance,created,**kwargs):
 def log_product_delete(sender,instance,**kwargs):
   LogProduct.objects.create(action="Deleted",product_name = instance)
 
+

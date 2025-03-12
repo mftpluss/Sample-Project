@@ -1,3 +1,4 @@
+import os
 """
 Django settings for sampleproject project.
 
@@ -37,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "shop"
+    "shop",
+    "sass_processor"
+
 ]
 
 MIDDLEWARE = [
@@ -116,7 +119,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# Ensure Django can find static files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Add sass_processor to STATICFILES_FINDERS
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+# Optional: Set output style for compiled CSS (e.g., compressed)
+SASS_PROCESSOR_ENABLED = True
+SASS_OUTPUT_STYLE = 'compressed'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -8,36 +8,26 @@
   <link rel="stylesheet" href="{% static "shop/style.css" %}">
 </head>
 <body>
-  <form>
-    <input id="input-1" type="text" placeholder="John Doe" required autofocus />
+  <form method="post" action="{% url "add_admin" %}">
+    {% csrf_token %}
+    <input id="input-1" type="text" placeholder="John Doe" required autofocus name="username-input" />
     <label for="input-1">
-      <span class="label-text">Full Name</span>
-      <span class="nav-dot"></span>
-      <div class="signup-button-trigger">Sign Up</div>
-    </label>
-    <input id="input-2" type="text" placeholder="john" required />
-    <label for="input-2">
       <span class="label-text">Username</span>
       <span class="nav-dot"></span>
+      <div class="signup-button-trigger">Add Admin</div>
     </label>
-    <input id="input-3" type="email" placeholder="email@address.com" required />
-    <label for="input-3">
-      <span class="label-text">Email</span>
-      <span class="nav-dot"></span>
-    </label>
-    <input id="input-4" type="text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required />
-    <label for="input-4">
-      <span class="label-text">Password</span>
-      <span class="nav-dot"></span>
-    </label>
-    <input id="input-5" type="text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required />
-    <label for="input-5">
-      <span class="label-text">Confirm Password</span>
+    <input id="input-2" type="text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required name="password-input"  />
+    <label for="input-2">
+      <span class="label-text">password</span>
       <span class="nav-dot"></span>
     </label>
     <button type="submit">Create Your Account</button>
-    <p class="tip">Press Tab</p>
-    <div class="signup-button">Sign Up</div>
+    <p class="tip">Back!</p>
+    <div class="signup-button">Add Admin</div>
   </form>
+  
+  {% load sweetify %}
+  {% sweetify %}
+
 </body>
 </html>

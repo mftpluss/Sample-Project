@@ -18,3 +18,11 @@ class LogProduct(models.Model):
 
   def __str__(self):
     return f"{self.action} - {self.product_name} - {self.timestamp}"
+
+class TempLogProudct(models.Model):
+  name = models.CharField(max_length=100)
+  # log_product = models.ForeignKey(LogProduct,on_delete=models.CASCADE)
+  description = models.CharField(max_length=100)
+
+  def __str__(self):
+    return f"TEMP => {self.log_product.product_name }"

@@ -5,3 +5,6 @@ from .models import *
 admin.site.register(Product)
 admin.site.register(LogProduct)
 admin.site.register(TempLogProudct)
+admin.site.register(Access)
+admin.site.register(AdminProfile)
+admin.site.register(Role)

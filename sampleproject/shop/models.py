@@ -1,4 +1,27 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class Access(models.Model):
+  name = models.CharField(max_length=50)
+
+  def __str__(self):
+    return f"Access => {self.name}"
+
+class Role(models.Model):
+  name = models.CharField(max_length=50)
+
+  def __str__(self):
+    return f"Role => {self.name}"
+
+
+
+class AdminProfile(models.Model):
+  user = models.OneToOneField(User,on_delete=models.CASCADE)
+  role = models.OneToOneField(Role,on_delete=models.CASCADE)
+  permissions = models.ManyToManyField(Access,blank=True)
+
+  def __str__(self):
+    return f"{self.user.username} - {self.role}"
 
 # Create your models here.
 class Product(models.Model):
@@ -8,6 +31,9 @@ class Product(models.Model):
 
   def __str__(self):
     return self.name
+  
+
+
 ######################################################
 # middleware
 class LogProduct(models.Model):
